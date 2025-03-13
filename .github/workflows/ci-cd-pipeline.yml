@@ -1,0 +1,33 @@
+name: Node.js CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main  # Trigger on push to the main branch
+  pull_request:
+    branches:
+      - main  # Trigger on pull requests targeting the main branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Define the runner environment (Ubuntu for Linux-based CI)
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2  # Checkout the code from the repository
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'  # Use Node.js version 14
+
+      - name: Install dependencies
+        run: npm install  # Install the project dependencies
+
+      - name: Run Tests
+        run: npm test  # Run your tests (you should have tests set up)
+
+      - name: Build and Deploy (optional)
+        run: |
+          npm run build  # Build the project (optional step if you have a build process)
+          npm run deploy  # You can configure your deploy command here (optional)
