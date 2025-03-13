@@ -3,7 +3,7 @@ name: Deploy to Vercel
 on:
   push:
     branches:
-      - main  # Deploy when code is pushed to the 'main' branch
+      - main
 
 jobs:
   deploy:
@@ -16,13 +16,16 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '20.1'  # Set to Node.js v16 or higher
 
       - name: Install dependencies
         run: npm install
 
+      - name: Install Vercel CLI
+        run: npm install -g vercel  # Install the Vercel CLI
+
       - name: Build project
-        run: npm run build  # If you have a build script
+        run: npm run build  # If you have a build process
 
       - name: Deploy to Vercel
         uses: amondnet/vercel-action@v20
