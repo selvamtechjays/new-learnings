@@ -1,6 +1,6 @@
-import express, { Request, Response } from "express";
-import cors from "cors";
-import dotenv from "dotenv";
+import express, { Request, Response } from 'express';  
+import cors from 'cors';
+import dotenv from 'dotenv';
 
 dotenv.config();
 
@@ -12,8 +12,8 @@ app.use(express.json());
 app.use(cors());
 
 // Simple Route
-app.get("/", (req: Request, res: Response) => {
-  res.send("Hello, TypeScript Server is running!");
+app.get('/', (req: Request, res: Response) => {
+  res.send('Hello, TypeScript Server is running!');
 });
 
 // Start Server
