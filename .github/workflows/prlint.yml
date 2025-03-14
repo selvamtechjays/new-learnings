@@ -1,0 +1,25 @@
+name: ESLint Check on PR
+
+on:
+  pull_request:
+    branches:
+      - main  # Trigger this workflow only on PRs targeting `main`
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20.1'  # Specify the Node.js version you are using
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run ESLint
+        run: npx eslint '**/*.ts' --max-warnings=0  # Lint all TypeScript files, fail if there are warnings
