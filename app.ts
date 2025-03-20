@@ -13,7 +13,7 @@ app.use(cors());
 
 // Simple Route
 app.get('/', (req: Request, res: Response) => {
-  res.send('Hello, TypeScript Server is running!');
+  res.send('Hello, TypeScript Server is running to local server!');
 });
 
 app.get('/add', (req: Request, res: Response) => {
